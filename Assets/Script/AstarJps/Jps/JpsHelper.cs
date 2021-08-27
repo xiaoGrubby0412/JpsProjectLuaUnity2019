@@ -16,17 +16,6 @@ namespace ACE
 {
     public class JpsHelperManager
     {
-        readonly int[,] DIR = {
-            { 0, -1 },
-            { 1, -1 },
-            { 1, 0 },
-            { 1, 1 },
-            { 0, 1 },
-            { -1, 1 },
-            { -1, 0 },
-            { -1, -1 }
-        };
-
         public int currentStep;
         public int maxStep;
         public int startX;

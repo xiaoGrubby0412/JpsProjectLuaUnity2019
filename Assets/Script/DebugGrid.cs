@@ -510,6 +510,12 @@ public class DebugGrid : MonoBehaviour
                     ACE.Grid.Instance.SetBlock(tempx + 1, tempz);
                     ACE.Grid.Instance.SetBlock(tempx + 1, tempz + 1);
                     ACE.Grid.Instance.SetBlock(tempx, tempz + 1);
+
+                    DemoControl.instance.luaManager.CallFunction("SetBlock", new Vector2(tempx, tempz));
+                    DemoControl.instance.luaManager.CallFunction("SetBlock", new Vector2(tempx + 1, tempz));
+                    DemoControl.instance.luaManager.CallFunction("SetBlock", new Vector2(tempx + 1, tempz + 1));
+                    DemoControl.instance.luaManager.CallFunction("SetBlock", new Vector2(tempx, tempz + 1));
+
                     updateListHeight(tempx, tempx + 1);
                     updateListWidth(tempz, tempz + 1);
                 }
@@ -523,6 +529,13 @@ public class DebugGrid : MonoBehaviour
                     ACE.Grid.Instance.SetNormal(tempx + 1, tempz);
                     ACE.Grid.Instance.SetNormal(tempx + 1, tempz + 1);
                     ACE.Grid.Instance.SetNormal(tempx, tempz + 1);
+
+                    DemoControl.instance.luaManager.CallFunction("SetNormal", new Vector2(tempx, tempz));
+                    DemoControl.instance.luaManager.CallFunction("SetNormal", new Vector2(tempx + 1, tempz));
+                    DemoControl.instance.luaManager.CallFunction("SetNormal", new Vector2(tempx + 1, tempz + 1));
+                    DemoControl.instance.luaManager.CallFunction("SetNormal", new Vector2(tempx, tempz + 1));
+
+
                     updateListHeight(tempx, tempx + 1);
                     updateListWidth(tempz, tempz + 1);
                 }

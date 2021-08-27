@@ -291,7 +291,7 @@ function JpsHelperManager:VerticalTest(_grid, _currentCell, _dir)
         return res
     else
         if nextCell.cost ~= 0 then
-            res.Add(nextCell)
+            table.insert(res, nextCell)
         end
     end
 

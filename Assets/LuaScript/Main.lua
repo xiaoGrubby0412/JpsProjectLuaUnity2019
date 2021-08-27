@@ -37,3 +37,16 @@ function StartFindPath()
 end
 
 
+---SetBlock
+---@param v2 Vector2
+function SetBlock(v2)
+	jpsGrid:SetBlock(v2.x, v2.y)
+end
+
+---SetNormal
+---@param v2 Vector2
+function SetNormal(v2)
+	jpsGrid:SetNormal(v2.x, v2.y)
+end
+
+

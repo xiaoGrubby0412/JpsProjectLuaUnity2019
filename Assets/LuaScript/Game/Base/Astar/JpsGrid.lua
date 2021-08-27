@@ -39,33 +39,33 @@ function JpsGrid:SetGridSize(cols, rows)
 end
 
 function JpsGrid:getNeighbor(_currentCell, _dx, _dy)
-    local x = _currentCell.X + _dx;
-    local y = _currentCell.Y + _dy;
+    local x = _currentCell.X + _dx
+    local y = _currentCell.Y + _dy
 
     if x >= 0 and x <= self.cols - 1 and y >= 0 and y <= self.rows - 1 then
-        return self.spots[x][y];
+        return self.spots[x][y]
     else
-        return nil;
+        return nil
     end
 end
 
 function JpsGrid:getNeighbor_byDirID(_currentCell, _dir)
-    local x = _currentCell.X + this.drections[_dir][0];
-    local y = _currentCell.Y + this.drections[_dir][1];
+    local x = _currentCell.X + self.drections[_dir][0]
+    local y = _currentCell.Y + self.drections[_dir][1]
 
     if x >= 0 and x <= self.cols - 1 and y >= 0 and y <= self.rows - 1 then
-        return self.spots[x][y];
+        return self.spots[x][y]
     else
-        return nil;
+        return nil
     end
 end
 
 function JpsGrid:SetBlock(x, y)
-    self.spots[x][y].cost = 0;
+    self.spots[x][y].cost = 0
 end
 
 function JpsGrid:SetNormal(x, y)
-    self.spots[x][y].cost = 1;
+    self.spots[x][y].cost = 1
 end
 
 return JpsGrid

@@ -16,7 +16,7 @@ public class DemoControl : MonoBehaviour
     public DebugGrid debugGrid;
     bool smooth = false;
     public static DemoControl instance;
-
+    public LuaManager luaManager;
     public JpsHelperManager jpsHelper;
 
     public const int mapWidth = 1400;
@@ -39,6 +39,9 @@ public class DemoControl : MonoBehaviour
         ACE.Grid.Instance = new ACE.Grid();
         jpsHelper = new JpsHelperManager(ACE.Grid.Instance);
         ACE.Grid.Instance.SetGridSize(DemoControl.mapWidth, DemoControl.mapHeight);
+
+        luaManager.CallFunction("Start", null);
+
         DebugGrid.Instance.width = DemoControl.mapWidth;
         DebugGrid.Instance.height = DemoControl.mapHeight;
         DebugGrid.Instance.blockData = ACE.Grid.Instance.spots;
@@ -133,15 +136,35 @@ public class DemoControl : MonoBehaviour
 
         if (type == 0)
         {
-
             jpsHelper.InitJps((int)s.x, (int)s.y, (int)t.x, (int)t.y, int.MaxValue, true);
             bool finded = jpsHelper.FindPath();
             if (finded == false) return;
 
             debugGrid.items = jpsHelper.pathList;
-
         }
-        
+        else
+        {
+            AstarParam p = new AstarParam();
+            p.startX = Convert.ToInt32(s.x);
+            p.startY = Convert.ToInt32(s.y);
+            p.endX = Convert.ToInt32(t.x * 10) / 10;
+            p.endY = Convert.ToInt32(t.y * 10) / 10;
+            p.ifNum = true;
+            p.ctrl = this;
+
+            curTime = Time.realtimeSinceStartup;
+            luaManager.CallFunction("InitJps", p);
+            luaManager.CallFunction("StartFindPath", null);
+        }
+
+    }
+
+    public void DrawPath(int[] items)
+    {
+        findPathTime = Time.realtimeSinceStartup - curTime;
+        List<int> lst = new List<int>(items);
+
+        debugGrid.items = lst;
     }
 
     void OnGUI()

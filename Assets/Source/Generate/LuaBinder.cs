@@ -14,6 +14,7 @@ public static class LuaBinder
 		DebugGridWrap.Register(L);
 		AstarParamWrap.Register(L);
 		DemoControlWrap.Register(L);
+		ByteUtilsWrap.Register(L);
 		L.BeginModule("LuaInterface");
 		LuaInterface_LuaInjectionStationWrap.Register(L);
 		LuaInterface_InjectTypeWrap.Register(L);

@@ -154,6 +154,7 @@ public static class CustomSettings
         _GT(typeof(DebugGrid)),
         _GT(typeof(AstarParam)),
         _GT(typeof(DemoControl)),
+        _GT(typeof(ByteUtils)),
     };
 
     public static List<Type> dynamicList = new List<Type>()

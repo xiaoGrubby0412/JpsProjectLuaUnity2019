@@ -68,5 +68,13 @@ function JpsGrid:SetNormal(x, y)
     self.spots[x][y].cost = 1
 end
 
+function JpsGrid:PrintGrid()
+    for i = 0, self.cols - 1, 1 do
+        for j = 0, self.rows - 1, 1 do
+            print("i == " .. i .. " j == " .. j .. " x == " .. self.spots[i][j].X .. " y == " .. self.spots[i][j].Y .. " cost == " .. self.spots[i][j].cost)
+        end
+    end
+end
+
 return JpsGrid
 

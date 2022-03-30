@@ -14,7 +14,7 @@ local jpsHelper = nil
 
 function Start()
 	jpsGrid = require("Game.Base.Astar.JpsGrid").New()
-	jpsGrid:SetGridSize(1400, 1400)
+	jpsGrid:SetGridSize(10, 10)
 	jpsHelper = require("Game.Base.Astar.JpsHelper").New(jpsGrid)
 end
 
@@ -30,12 +30,16 @@ end
 
 
 function StartFindPath()
+	jpsGrid:PrintGrid()
 	local isFind = jpsHelper:FindPath()
 	if isFind then
 		ctrl:DrawPath(jpsHelper.pathList)
 	end
 end
 
+function Search()
+	jpsHelper:Search()
+end
 
 ---SetBlock
 ---@param v2 Vector2

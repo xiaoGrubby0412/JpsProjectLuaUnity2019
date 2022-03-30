@@ -7,7 +7,7 @@
 
 local APriorityQueue = require("Game.Base.Astar.APriorityQueue")
 
----@class JpsHelperManager
+---@class JpsHelperManagerC
 ---@field currentStep number
 ---@field maxStep number
 ---@field startX number
@@ -41,12 +41,12 @@ end
 
 function JpsHelperManager:InitJps(startX, startY, endX, endY, p_maxStep, ifNum)
     if self.grid.spots[startX][startY].cost == 0 then
-        PrintError("startX startY is Block !!! startX == " .. startX .. " startY == " .. startY)
+        print("startX startY is Block !!! startX == " .. startX .. " startY == " .. startY)
         return false
     end
 
     if self.grid.spots[endX][endY].cost == 0 then
-        PrintError("endX endY is Block !!! endX == " .. endX .. " endY == " .. endY)
+        print("endX endY is Block !!! endX == " .. endX .. " endY == " .. endY)
         return false
     end
 
@@ -63,7 +63,7 @@ function JpsHelperManager:FindPath()
     end
 
     if self.finalNode == nil then
-        PrintError("no path found return nil curStep == " .. self.currentStep)
+        print("no path found return nil curStep == " .. self.currentStep)
         return false
     else
         print("curStep == " .. self.currentStep)
@@ -173,7 +173,7 @@ function JpsHelperManager:jump(_neighbor, _current, _grid)
     local forceNeighbor2 = nil
     local obstacle2 = nil
 
-    if (dx * dy) ~= 0 then
+    if ByteUtils.Band(dx, dy) ~= 0 then
         forceNeighbor1 = _grid:getNeighbor(_neighbor, -dx, dy)
         obstacle1 = _grid:getNeighbor(_neighbor, -dx, 0)
         forceNeighbor2 = _grid:getNeighbor(_neighbor, dx, -dy)
@@ -381,6 +381,11 @@ end
 function JpsHelperManager:Search()
     
     local minFNode = self.sortedOpenQue:Pop()
+
+    if minFNode == nil then
+        print("minFNode == nil")    
+    end
+    
     local _num = ANode.KeyByXY(minFNode.X, minFNode.Y)
     if self.openDict[_num] ~= nil then
         self.openDict[_num] = nil
@@ -402,7 +407,7 @@ function JpsHelperManager:Search()
         self:GetNeighbors(minFNode)
     end
 
-    for i = 0, #self.neighbors - 1, 1 do
+    for i = 1, #self.neighbors, 1 do
         local neighbor = self.neighbors[i]
         local jumpNode = self:jump(neighbor, minFNode, self.grid)
         if jumpNode ~= nil and self.closeDict[jumpNode:GetKey()] == nil then
@@ -417,7 +422,7 @@ function JpsHelperManager:Search()
                         local nn = self.sortedOpenQue.head[k]
                         if jumpNode.X == nn.X and jumpNode.Y == nn.Y then
                             if ifSetK then
-                                PrintError("ifSetK == True ..........................................")
+                                print("ifSetK == True ..........................................")
                                 
                                 nn.Parent = minFNode
                                 nn.G = g_score

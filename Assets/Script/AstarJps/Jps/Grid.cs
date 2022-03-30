@@ -78,6 +78,17 @@ namespace ACE
         {
             this.spots[x][y].cost = 1;
         }
+
+        public void PrintGrid()
+        {
+            for (int i = 0; i < this.cols; i++)
+            {
+                for (int j = 0; j < this.rows; j++)
+                {
+                    Debug.Log("i == " + i + " j == " + j + " x == " + this.spots[i][j].X + " y == " + this.spots[i][j].Y + " cost == " + this.spots[i][j].cost);
+                }
+            }
+        }
     }
 }
 

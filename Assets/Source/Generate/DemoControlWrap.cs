@@ -20,8 +20,8 @@ public class DemoControlWrap
 		L.RegVar("instance", get_instance, set_instance);
 		L.RegVar("luaManager", get_luaManager, set_luaManager);
 		L.RegVar("jpsHelper", get_jpsHelper, set_jpsHelper);
-		L.RegConstant("mapWidth", 1400);
-		L.RegConstant("mapHeight", 1400);
+		L.RegConstant("mapWidth", 100);
+		L.RegConstant("mapHeight", 100);
 		L.RegVar("spos", get_spos, set_spos);
 		L.RegVar("tpos", get_tpos, set_tpos);
 		L.EndClass();

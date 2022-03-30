@@ -4736,6 +4736,94 @@ function DemoControl:OnDestroy() end
 ---@param items number[]
 function DemoControl:DrawPath(items) end
 
+---@class ByteUtils
+ByteUtils = {}
+---@param v number
+---@param c number
+---@return number
+function ByteUtils.Lshift(v, c) end
+---@param v number
+---@param c number
+---@return number
+function ByteUtils.Rshift(v, c) end
+---@param v1 number
+---@param v2 number
+---@return number
+function ByteUtils.Band(v1, v2) end
+---@param v1 number
+---@param v2 number
+---@return number
+function ByteUtils.Bor(v1, v2) end
+---@param v1 number
+---@param v2 number
+---@return number
+function ByteUtils.Bxor(v1, v2) end
+---@param s string
+---@return number[]
+function ByteUtils.String2ByteArray(s) end
+---@param s number[]
+---@return string
+function ByteUtils.ByteArray2String(s) end
+---@param s number
+---@return number[]
+function ByteUtils.Short2ByteArray(s) end
+---@param s number[]
+---@param startPos number
+---@return number
+function ByteUtils.ByteArray2Short(s, startPos) end
+---@param val number[]
+---@return number[]
+function ByteUtils.ShortArray2ByteArray(val) end
+---@param s number[]
+---@return number[]
+function ByteUtils.ByteArray2ShortArray(s) end
+---@param s number
+---@return number[]
+function ByteUtils.Int2ByteArray(s) end
+---@param s number[]
+---@param startPos number
+---@return number
+function ByteUtils.ByteArray2Int(s, startPos) end
+---@param s number[]
+---@return number[]
+function ByteUtils.IntArray2ByteArray(s) end
+---@param s number[]
+---@return number[]
+function ByteUtils.ByteArray2IntArray(s) end
+---@param a1 number
+---@param a2 number
+---@return number
+function ByteUtils.ToInt(a1, a2) end
+---@param a1 number
+---@param a2 number
+---@param a3 number
+---@param a4 number
+---@return number
+function ByteUtils.ToInt(a1, a2, a3, a4) end
+---@param s number
+---@param startPos number
+---@param value number
+---@param overWriteLength number
+---@return number
+function ByteUtils.SetBitValue(s, startPos, value, overWriteLength) end
+---@param s number
+---@param startPos number
+---@param length number
+---@return number
+function ByteUtils.GetBitValue(s, startPos, length) end
+---@param s number[]
+---@return number[]
+function ByteUtils.ChangeByte2HpyChar(s) end
+---@param s number[]
+---@return number[]
+function ByteUtils.ChangeChar2Hpy(s) end
+---@param s number
+---@return number
+function ByteUtils.ChangeHpyChar2Byte(s) end
+---@param s number
+---@return number
+function ByteUtils.ChangeHyp2Char(s) end
+
 ---@class Enum
 local Enum = {}
 ---@param obj Object
